@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Error</title>
+    <link href="//live.wikifx.com/contentgj/css/error404.css" rel="stylesheet" />
+    <script src="//live.wikifx.com/contentgj/js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+    @*@if (CommonHelper.IsChina())
+    {
+        <style>
+            .error_late {
+                text-align: center;
+                margin-top: 80px !important;
+                margin-bottom: 80px !important;
+            }
+        </style>
+        <link href="//osshead.fx696.com/headfoot/Content/css/head_cn.css?v=@GetApiData.GetVersion()" rel="stylesheet" />
+
+        var head = GetApiData.GetCommonHeadContent(GetCountryAndLanguage.GetCountry(), GetCountryAndLanguage.GetLanguage(), "集市", Model);
+        if (string.IsNullOrEmpty(head))
+        {
+            head = GetApiData.GetCommonHeadContent(GetCountryAndLanguage.GetCountry(), GetCountryAndLanguage.GetLanguage(), "集市", Model);
+        }
+        @Html.Raw(head)
+    }*@
+    <div class="error_late width_1200">
+
+        <div class="error_left">
+            <div class="error_logo">
+                @*@if (!CommonHelper.IsChina())
+                {
+                    <img src='//live.wikifx.com/Contentgj/images/logo/en.png' />
+                }*@
+                @*<img src="//live.wikifx.com/contentgj/images/logo_bg_ico.png" />*@
+
+            </div>
+            <p class="error_txt">
+                <span class="error_bold">@ViewContext.HttpContext.Request.Query["state"].</span>
+                <span>That’s an error</span>
+            </p>
+            @*@if (!CommonHelper.IsChina())
+            {
+                <div class='error_back'>
+                    <div><span>Back&nbsp;to</span><a href='//www.wikifx.com' class='error_late'>&nbsp;home</a><span>&nbsp;in&nbsp;</span><span id='timespan' class='time_count'>3</span><span>&nbsp;seconds</span></div>
+                </div>
+            }
+            else
+            {*@
+                <div id='back_cn' class='error_back'><div><span class='time_count' id='timespan'>3</span><span>&nbsp;秒</span><span>后返回&nbsp;</span><a href='//www.fxeye.com' class='error_late'>首页</a></div></div>
+            @*}
+            <span style="display:none;" id="url">@(CommonHelper.IsChina() ? "//www.fxeye.com" : "//www.wikifx.com")</span>*@
+        </div>
+        <div class="error_Right">
+            <img src="//live.wikifx.com/Contentgj/images/error_bg01.png" />
+        </div>
+
+
+    </div>
+    @*@if (CommonHelper.IsChina())
+    {
+        @Html.Raw(GetApiData.GetCommonFooterContent(GetCountryAndLanguage.GetCountry(), GetCountryAndLanguage.GetLanguage()));
+    }*@
+
+</body>
+
+<script src="//live.wikifx.com/Contentgj/js/404.js"></script>
+</html>
